@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Guide</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f7f9;
+}
+
+header{
+    background:#2e8b57;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+nav{
+    background:#1f6f46;
+    text-align:center;
+    padding:10px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:8px;
+    font-weight:bold;
+}
+
+section{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.search-box{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+.warning{
+    color:red;
+    font-weight:bold;
+}
+
+button{
+    background:#2e8b57;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+footer{
+    background:#2e8b57;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Health Guide</h1>
+    <p>Information about common health problems</p>
+</header>
+
+<nav>
+    <a href="#fever">Fever</a>
+    <a href="#cold">Cold</a>
+    <a href="#headache">Headache</a>
+    <a href="#stomach">Stomach Pain</a>
+    <a href="#hand">Hand Pain</a>
+    <a href="#leg">Leg Pain</a>
+</nav>
+
+<section>
+    <h2>Search Health Topics</h2>
+    <input
+        type="text"
+        id="searchInput"
+        class="search-box"
+        placeholder="Search fever, cold, headache, stomach pain..."
+        onkeyup="searchContent()">
+</section>
+
+<section class="health-section" id="fever">
+    <h2>Fever</h2>
+    <p><b>Symptoms:</b> High temperature, chills, weakness.</p>
+    <p><b>Home Care:</b> Rest, drink water, eat light food.</p>
+    <p class="warning">See a doctor if fever is very high or lasts several days.</p>
+</section>
+
+<section class="health-section" id="cold">
+    <h2>Cold & Cough</h2>
+    <p><b>Symptoms:</b> Runny nose, sneezing, cough.</p>
+    <p><b>Home Care:</b> Rest, warm fluids, hydration.</p>
+    <p class="warning">Seek medical help if breathing becomes difficult.</p>
+</section>
+
+<section class="health-section" id="headache">
+    <h2>Headache</h2>
+    <p><b>Symptoms:</b> Head pain, tiredness, sensitivity to light.</p>
+    <p><b>Home Care:</b> Rest, water, proper sleep.</p>
+    <p class="warning">See a doctor for sudden severe headaches.</p>
+</section>
+
+<section class="health-section" id="stomach">
+    <h2>Stomach Pain</h2>
+    <p><b>Symptoms:</b> Pain, bloating, nausea.</p>
+    <p><b>Home Care:</b> Fluids, bland food, avoid spicy foods.</p>
+    <p class="warning">See a doctor for severe pain or persistent vomiting.</p>
+</section>
+
+<section class="health-section" id="hand">
+    <h2>Hand Pain</h2>
+    <p><b>Symptoms:</b> Pain, stiffness, swelling.</p>
+    <p><b>Home Care:</b> Rest the hand and avoid heavy lifting.</p>
+    <p class="warning">See a doctor if pain follows an injury or causes numbness.</p>
+</section>
+
+<section class="health-section" id="leg">
+    <h2>Leg Pain</h2>
+    <p><b>Symptoms:</b> Pain, cramps, swelling.</p>
+    <p><b>Home Care:</b> Rest, gentle stretching, hydration.</p>
+    <p class="warning">Seek medical help for severe swelling or sudden pain.</p>
+</section>
+
+<section>
+    <h2>Emergency Numbers (India)</h2>
+    <ul>
+        <li>Emergency: 112</li>
+        <li>Ambulance: 108</li>
+    </ul>
+
+    <button onclick="findHospital()">
+        Find Nearby Hospitals
+    </button>
+
+    <p id="result"></p>
+</section>
+
+<section>
+    <h2>Disclaimer</h2>
+    <p>
+        This website provides educational health information only.
+        It does not diagnose or treat medical conditions.
+        Consult a qualified healthcare professional for medical advice.
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 Health Guide</p>
+</footer>
+
+<script>
+function searchContent() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let sections = document.getElementsByClassName("health-section");
+
+    for(let i = 0; i < sections.length; i++) {
+        let text = sections[i].innerText.toLowerCase();
+
+        if(text.includes(input)) {
+            sections[i].style.display = "block";
+        } else {
+            sections[i].style.display = "none";
+        }
+    }
+}
+
+function findHospital() {
+    document.getElementById("result").innerHTML =
+        "Opening nearby hospitals in Google Maps...";
+
+    window.open(
+        "https://www.google.com/maps/search/hospitals+near+me",
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
